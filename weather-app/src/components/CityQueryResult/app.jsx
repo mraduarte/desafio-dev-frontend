@@ -1,14 +1,13 @@
 import "./app.css";
+import Icons from '../../utils/icons';
 
 import {
   MapPin,
   DropHalfBottom,
   Wind,
-  CloudRain,
-  Cloud,
-  Snowflake,
   Star,
-  CloudFog
+  ArrowDown,
+  ArrowUp
 } from "phosphor-react";
 
 const app = ({ weather, addFavorite, isFavorite }) => {
@@ -20,12 +19,13 @@ const app = ({ weather, addFavorite, isFavorite }) => {
   return (
     <div className="city-weather-container">
       <h4 className="city">
-        <MapPin size={25} weight="fill" /> {weather.name}, {weather.sys.country}{" "}
+        <MapPin size={25} weight="bold"/> {weather.name}, {weather.sys.country}{" "}
         <Star
           size={18}
           weight={isFavorite ? "fill" : "bold"}
           color={isFavorite ? "#FFD700" : "#000"}
           onClick={toggleFavorite}
+          style={{ cursor: "pointer" }}
         />
       </h4>
       <p className="date">
@@ -37,21 +37,13 @@ const app = ({ weather, addFavorite, isFavorite }) => {
         })}
       </p>
       <h1 className="weather">
-        {weather.weather[0].main === "Rain" ? (
-          <CloudRain size={42} weight="bold" />
-        ) : weather.weather[0].main === "Clouds" ? (
-          <Cloud size={42} weight="bold" />
-        ) : weather.weather[0].main === "Snow" ? (
-          <Snowflake size={42} weight="bold" />
-        ) : weather.weather[0].main === "Mist" ? (
-          <CloudFog size={42} weight="fill" />
-        ) : null}
+        <Icons weather={weather.weather[0].main} iconSize={42}/>
         <p className="main-weather">{Math.floor(weather.main.temp)}°C</p>
       </h1>
       <p>{weather.weather[0].description}</p>
       <div className="min-max-temp">
-        <p>Mín.: {Math.floor(weather.main.temp_min)}°C</p>
-        <p>Máx.:{Math.floor(weather.main.temp_max)}°C</p>
+        <p><ArrowDown size={18} />{Math.floor(weather.main.temp_min)}°C</p>
+        <p><ArrowUp size={18} />{Math.floor(weather.main.temp_max)}°C</p>
         <p>
           <DropHalfBottom size={17} weight="fill" />
           {weather.main.humidity}%
@@ -62,8 +54,6 @@ const app = ({ weather, addFavorite, isFavorite }) => {
         </p>
       </div>
       <p>Sensação térmica: {Math.floor(weather.main.feels_like)}°C</p>
-
-      {/* <p>USAR PARA TROCAR A IMAGEM: {weather.weather[0].main}</p> */}
     </div>
   );
 };

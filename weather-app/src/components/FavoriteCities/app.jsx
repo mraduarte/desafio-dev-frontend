@@ -1,25 +1,32 @@
 import "./app.css";
+import Icons from "../../utils/icons";
 
-import { CloudRain, Cloud, Snowflake } from "phosphor-react";
+import { TrashSimple } from "phosphor-react";
 
-const app = ({ cities }) => {
+const app = ({ cities, removeFavorite }) => {
   return (
-    <div>
-      <ul>
-        {cities.map((city, idx) => (
-          <li key={idx}>
-            {city.name} - {city.sys.country} -{" "}
-            {city.weather[0].main === "Rain" ? (
-              <CloudRain size={19} weight="bold" />
-            ) : city.weather[0].main === "Clouds" ? (
-              <Cloud size={19} weight="bold" />
-            ) : city.weather[0].main === "Snow" ? (
-              <Snowflake size={19} weight="bold" />
-            ) : null}{" "}
-            {Math.floor(city.main.temp)}°C
-          </li>
-        ))}
-      </ul>
+    <div className="favorite-cities-container">
+      <div>
+        <h5>Cidades favoritas:</h5>
+      </div>
+      {cities.length > 0 ? (
+        <ul>
+          {cities.map((city, idx) => (
+            <li key={idx}>
+              {city.name} - {city.sys.country}{" "}
+              <Icons weather={city.weather[0].main} iconSize={19} />
+              {Math.floor(city.main.temp)}°C{" "}
+              <TrashSimple
+                size={19}
+                onClick={() => removeFavorite(city)}
+                style={{ cursor: "pointer" }}
+              />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Nenhuma cidade favorita.</p>
+      )}
     </div>
   );
 };

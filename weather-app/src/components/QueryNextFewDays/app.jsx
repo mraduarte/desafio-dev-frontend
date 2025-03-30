@@ -3,6 +3,7 @@ import "./app.css";
 const app = ({ nextFewDaysForecast }) => {
   return (
     <div className="next-few-days-container">
+      <h5>Próximas previsões:</h5>
       <ul>
         {nextFewDaysForecast.map((x) => (
           <li key={x.dt}>

@@ -1,0 +1,33 @@
+.favorite-cities-container {
+  background-color: rgba(205, 205, 205, 0.47);
+  border-radius: 12px;
+  overflow-y: auto;
+  max-width: 500px;
+  margin-bottom: 30px;
+  padding: 20px 0;
+}
+
+.favorite-cities-container ul {
+  list-style-type: none;
+}
+
+.favorite-cities-container li {
+  margin-bottom: 7px;
+  display: flex;
+  gap: 8px;
+}
+
+.favorite-cities-container h5 {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .favorite-cities-container {
+    margin-bottom: 0;
+    padding: 20px 80px;
+    max-height: 400px;
+  }
+}

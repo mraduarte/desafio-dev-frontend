@@ -9,10 +9,11 @@ const app = ({ city, setCity, getWeather }) => {
     <div className="search-container">
       <TextField
         id="outlined-basic"
-        label="Digite aqui..."
+        label="Digite a cidade"
         size="small"
         value={city}
         onChange={(x) => setCity(x.target.value)}
+        className="input-city"
       />
       <Button variant="contained" onClick={getWeather} size="medium">
         Pesquisar
