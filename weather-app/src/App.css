@@ -1,42 +1,52 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.weather-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../public/Sun.jpg);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.weather-container.Rain {
+  background-image: url('../public/Rain.jpg');
+  background-color: rgba(255, 255, 255, 0.6);
+  background-blend-mode: lighten;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.weather-container.Clear{
+  background-image: url(../public/Clear.jpg);
+}
+.weather-container.Clouds{
+  background-image: url(../public/Clouds.jpg);
+  background-color: rgba(255, 255, 255, 0.6);
+  background-blend-mode: lighten;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.weather-container.Mist{
+  background-image: url(../public/Mist.jpeg);
+  background-blend-mode: lighten;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.weather-container.Snow{
+  background: linear-gradient(to bottom, white, rgb(233, 232, 232));
+}
+
+@media screen and (min-width: 768px) {
+  .weather-container {
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-  to {
-    transform: rotate(360deg);
+
+  .forecast-containers{
+    display: flex;
+    gap: 30px;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

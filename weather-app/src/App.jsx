@@ -1,35 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { useState } from "react";
+import axios from "axios";
+
+import SearchBar from "./components/SearchBar/app";
+import CityQueryResult from "./components/CityQueryResult/app";
+import QueryNextFewDays from "./components/QueryNextFewDays/app";
+import FavoriteCities from "./components/FavoriteCities/app"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState(null);
+  const [nextForecast, setNextForecast] = useState([]);
+  const [favorite, setFavorite] = useState([]);
 
+  const apiKey = import.meta.env.VITE_API_KEY || "";
+
+  const getWeather = async () => {
+    try {
+      const weatherResponse = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`
+      );
+
+      const nextForecastResponse = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`
+      );
+
+      console.log(weatherResponse.data);
+
+      setWeather(weatherResponse.data);
+      setNextForecast(nextForecastResponse.data.list.slice(0, 5));
+    } catch (error) {
+      console.log("Erro ao captar o clima: " + error);
+    }
+  };
+  const toggleFavorite = (weather) => {
+    if (!weather) return;
+  
+    const isAlreadyFavorite = favorite.some((item) => item.name === weather.name);
+  
+    if (isAlreadyFavorite) {
+      setFavorite(favorite.filter((item) => item.name !== weather.name));
+    } else {
+      setFavorite([...favorite, weather]);
+    }
+  };
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div
+      className={`weather-container ${weather ? weather.weather[0].main : ""}`}
+    >
+      <h1>Previsão do tempo</h1>
+      <SearchBar city={city} setCity={setCity} getWeather={getWeather} />
+      <div className="forecast-containers">
+        <FavoriteCities cities={favorite}/>
+        {weather && (
+          <CityQueryResult
+            weather={weather}
+            addFavorite={toggleFavorite}
+            isFavorite={favorite.some((item) => item.name === weather.name)}
+          />
+        )}
+        {nextForecast.length > 0 && (
+          <QueryNextFewDays nextFewDaysForecast={nextForecast} />
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
