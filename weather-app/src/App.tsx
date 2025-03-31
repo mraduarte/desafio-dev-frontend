@@ -124,8 +124,9 @@ function App() {
       </div>
     </div>
   ) : (
-    <div className="loader-container">
-      <div className="loader"></div>
+    <div className={`weather-container`}>
+      <h1 style={{ fontWeight: "bold" }}>Previsão do tempo</h1>
+      <SearchBar city={city} setCity={setCity} getWeather={getWeather} />
     </div>
   );
 }
