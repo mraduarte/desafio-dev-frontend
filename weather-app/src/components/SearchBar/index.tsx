@@ -20,7 +20,12 @@ const SearchBar = ({ city, setCity, getWeather }: Props) => (
       onChange={(e) => setCity(e.target.value)}
       className="search-input"
     />
-    <Button variant="contained" onClick={getWeather} size="large" className="search-button">
+    <Button
+      variant="contained"
+      onClick={getWeather}
+      size="large"
+      className="search-button"
+    >
       Pesquisar
     </Button>
   </div>

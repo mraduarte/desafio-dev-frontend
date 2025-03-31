@@ -1,7 +1,7 @@
 import "./styles.css";
 import Icons from "../../utils/icons";
 import { TrashSimple } from "phosphor-react";
-import React from 'react';
+import React from "react";
 import { WeatherData } from "../../interfaces";
 
 interface Props {

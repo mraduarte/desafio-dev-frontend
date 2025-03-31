@@ -26,10 +26,18 @@
   background-image: url(../public/Sun.jpg);
 }
 
-.weather-container.Rain { background-image: url(../public/Rain.jpg); }
-.weather-container.Clear { background-image: url(../public/Clear.jpg); }
-.weather-container.Clouds { background-image: url(../public/Clouds.jpg); }
-.weather-container.Mist { background-image: url(../public/Mist.jpeg); }
+.weather-container.Rain {
+  background-image: url(../public/Rain.jpg);
+}
+.weather-container.Clear {
+  background-image: url(../public/Clear.jpg);
+}
+.weather-container.Clouds {
+  background-image: url(../public/Clouds.jpg);
+}
+.weather-container.Mist {
+  background-image: url(../public/Mist.jpeg);
+}
 
 .loader-container {
   display: flex;
@@ -48,8 +56,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media (min-width: 768px) {

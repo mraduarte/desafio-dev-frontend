@@ -1,6 +1,6 @@
 import "./styles.css";
-import Icons from '../../utils/icons';
-import React from 'react';
+import Icons from "../../utils/icons";
+import React from "react";
 import { WeatherData } from "../../interfaces";
 
 import {
@@ -9,7 +9,7 @@ import {
   Wind,
   Star,
   ArrowDown,
-  ArrowUp
+  ArrowUp,
 } from "phosphor-react";
 
 interface Props {
@@ -51,8 +51,14 @@ const CityQueryResult = ({ weather, addFavorite, isFavorite }: Props) => {
       <p>{weather.weather[0].description}</p>
 
       <div className="min-max-temp">
-        <p><ArrowDown size={18} />{Math.floor(weather.main.temp_min)}°C</p>
-        <p><ArrowUp size={18} />{Math.floor(weather.main.temp_max)}°C</p>
+        <p>
+          <ArrowDown size={18} />
+          {Math.floor(weather.main.temp_min)}°C
+        </p>
+        <p>
+          <ArrowUp size={18} />
+          {Math.floor(weather.main.temp_max)}°C
+        </p>
         <p>
           <DropHalfBottom size={17} weight="fill" />
           {weather.main.humidity}%

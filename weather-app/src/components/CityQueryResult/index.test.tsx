@@ -18,7 +18,7 @@ jest.mock("../../utils/icons", () => ({
   default: () => <span data-testid="weather-icon" />,
 }));
 
-const mockWeather: WeatherData = {  
+const mockWeather: WeatherData = {
   name: "Joinville",
   sys: { country: "BR" },
   weather: [{ main: "Rain", description: "chuva leve" }],

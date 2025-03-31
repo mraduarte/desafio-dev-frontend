@@ -88,7 +88,7 @@ function App() {
   useEffect(() => {
     const addDefaultFavorite = async () => {
       const defaultWeather = await getWeatherByCity("Manchester");
-  
+
       setFavorite((x) => {
         const isAlreadyFavorite = x.some((city) => city.name === "Manchester");
         if (!isAlreadyFavorite) {
@@ -99,10 +99,10 @@ function App() {
         return x;
       });
     };
-  
+
     addDefaultFavorite();
   }, []);
-  
+
   return weather ? (
     <div className={`weather-container ${weather.weather[0].main}`}>
       <h1 style={{ fontWeight: "bold" }}>Previsão do tempo</h1>

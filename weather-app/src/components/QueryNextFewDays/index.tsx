@@ -1,5 +1,5 @@
 import "./styles.css";
-import React from 'react';
+import React from "react";
 import { ForecastItem } from "../../interfaces";
 
 interface Props {
@@ -12,8 +12,14 @@ const App = ({ nextFewDaysForecast }: Props) => (
     <ul>
       {nextFewDaysForecast.map((item) => (
         <li key={item.dt}>
-          {new Date(item.dt_txt).toLocaleDateString("pt-BR", { weekday: "short" })},{" "}
-          {new Date(item.dt_txt).toLocaleTimeString("pt-BR", { hour: "2-digit" })}h
+          {new Date(item.dt_txt).toLocaleDateString("pt-BR", {
+            weekday: "short",
+          })}
+          ,{" "}
+          {new Date(item.dt_txt).toLocaleTimeString("pt-BR", {
+            hour: "2-digit",
+          })}
+          h
           <img
             src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
             alt={item.weather[0].description}
