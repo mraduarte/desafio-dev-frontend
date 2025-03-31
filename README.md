@@ -1,46 +1,82 @@
-# Desafio de programação para vaga de desenvolvedor front end
+# Weather App ☁️🌦️
 
-O intuito deste teste é avaliar seus conhecimentos técnicos e boas práticas em código. O teste consiste em criar uma página simples com consumo de API.
+Sistema de previsão do tempo que permite exibir a previsão atual e futura da cidade desejada, além de permitir a busca e gestão das cidades favoritas. Ao carregar o projeto e permitir o compartilhamento da localização, renderizará as previsões da cidade em que o usuário se encontra e suas cidades favoritas anteriormente adicionadas.
 
-Siga os requisitos obrigatórios, mas não se atenha somente a eles. Use sua criatividade!
+## ⚙️ Funcionalidades
 
-# Descrição do projeto
+- **Campo de busca:** Input para digitar o nome da cidade.
+- **Cidades favoritas:** Lista com nome da cidade e país, temperatura atual e ícone de lixeira.
+- **Clima atual:** Nome da cidade, país, data atual, temperatura, descrição do clima, ícone e dados adicionais como mínima/máxima, umidade, vento e sensação térmica.
+- **Próximas previsões:** Lista por hora com horário, ícone, temperatura e descrição.
 
-Construa uma página simples que consuma uma API de previsão do tempo e retorne as informações de temperatura atual, mínima e máxima para o dia (ºC).
+## 🎨 Visual
 
-Crie uma interface que aceite o input de uma cidade, liste as cidades que se enquadrem na sua busca, e ao selecioná-la, retorne as informações solicitadas.
+- Fundo da aplicação muda conforme o clima da cidade pesquisada.
+- Detecta a cidade atual automaticamente via geolocalização.
+- Design mobile first.
 
-Você pode utilizar a API que seja mais conveniente para o resgate das informações. Como sugestão, o [OpenWeatherMap](https://openweathermap.org/api) é uma escolha que satisfaz os requisitos do desafio.
+## 🛠 Tecnologias utilizadas
 
+- **React (TypeScript + JavaScript):** Construção das interfaces e tipagem.
+- **Axios:** Requisições à API do OpenWeatherMap.
+- **Material UI:** Componentes visuais como botões e campos.
+- **Phosphor Icons:** Ícones do clima e ações.
+- **React Testing Library:** Testes de interface.
+- **OpenWeatherMap API:** Fonte dos dados climáticos.
 
-**Requisitos Obrigatórios:**
+## ▶️ Como executar o projeto
 
-1. Utilizar React com Material UI ou Chakra UI.
-2. Utilizar tipografia Montserrat.
-3. Possuir as versões desktop e mobile. É fortemente encorajado que seja mobile first.
-4. Utilizar apenas bibliotecas livres ou gratuitas, e deve ser implementada apenas com Javascript e Typescript.
-5. Utilizar testes (React Testing Lib, Cypress, etc).
-6. Conter o arquivo README.md, descrevendo detalhadamente o projeto e seu setup. O arquivo deve identificar todas as etapas e dependências para a instância da aplicação.
+```bash
+git clone https://github.com/mraduarte/desafio-dev-frontend.git
+cd weather-app
+npm install
+npm run dev
+```
 
-**Sua aplicação web não precisa:**
+## ▶️ Como executar o teste
 
-1. Lidar com autenticação ou autorização interna (pontos extras se ela fizer, mais pontos extras se a autenticação for feita via OAuth).
+```bash
+cd weather-app
+npm test
+```
 
-**Bônus na Avaliação!**
+## 📁 Estrutura de pastas
 
-1. Crie uma lista persistente de cidades favoritas, preferencialmente já apresentando algumas das informações de previsão do tempo em tela ao acessar a página.
-2. Traga mais informações: precipitação, vento, previsão para os próximos dias... Pense também na interface para apresentar estas informações.
-3. Hospede sua aplicação em algum serviço gratuito (Vercel, AWS Free Tier, etc).
-4. Crie layouts dinâmicos baseados na localização (por exemplo, backgrounds de acordo com o tempo atual, ou modo diurno/noturno baseado no horário de acesso à página). Solte sua criatividade e mostre um pouco das suas habilidades de UI/UX.
+```bash
+src/
+├── assets/
+├── components/
+│   ├── CityQueryResult/
+│   │   ├── index.tsx
+│   │   ├── index.test.tsx
+│   │   └── styles.css
+│   ├── FavoriteCities/
+│   │   ├── index.tsx
+│   │   ├── index.test.tsx
+│   │   └── styles.css
+│   ├── QueryNextFewDays/
+│   │   ├── index.tsx
+│   │   └── styles.css
+│   └── SearchBar/
+│       ├── index.tsx
+│       ├── index.test.tsx
+│       └── styles.css
+├── interfaces/
+├── services/
+│   └── apiService.ts
+├── utils/
+├── App.tsx
+├── App.css
+├── index.tsx
+├── index.css
+├── main.tsx
+└── setupTests.ts
+```
 
+### 🌐 Publicação
+O site está disponível em: https://manchesterweatherapp.netlify.app/
 
-# Instruções de entrega do desafio
+### Agradecimentos
+Obrigada pela oportunidade de realizar esse teste. Foi uma ótima experiência colocar em prática o que venho aprendendo e poder desenvolver uma solução muito interessante de previsão do tempo. Com certeza aprendi muito com o projeto.
 
-1. Faça um fork deste projeto para sua conta no Github.
-2. Em seguida, implemente o projeto neste repositório, seguindo suas especificações.
-3. Por fim, envie o link do seu projeto para seu contato Manchester Investimentos com cópia para rh@manchesterinvest.com.br.
-
-# Referência
-
-Este teste técnico foi baseado no seguinte desafio: 
-https://github.com/1STi/desafio-frontend/
+Caso tenha dúvidas, entre em contato comigo por meio dos canais disponibilizados no meu perfil: https://github.com/mraduarte.
