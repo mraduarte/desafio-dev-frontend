@@ -1,6 +1,12 @@
-import { CloudRain, Cloud, Snowflake, CloudFog, Sun } from 'phosphor-react'
+import React from 'react';
+import { CloudRain, Cloud, Snowflake, CloudFog, Sun } from 'phosphor-react';
 
-const Icons = ({ weather, iconSize }) => {
+interface Props {
+  weather: 'Rain' | 'Clouds' | 'Snow' | 'Mist' | 'Clear' | string;
+  iconSize: number;
+}
+
+const Icons = ({ weather, iconSize }: Props) => {
   const icon = () => {
     switch (weather) {
       case 'Rain':
@@ -12,11 +18,12 @@ const Icons = ({ weather, iconSize }) => {
       case 'Mist':
         return <CloudFog size={iconSize} weight="bold" />;
       case 'Clear':
-        return <Sun size={iconSize} weight="bold"/>;
+        return <Sun size={iconSize} weight="bold" />;
       default:
         return null;
     }
   };
+
   return <div>{icon()}</div>;
 };
 

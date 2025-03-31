@@ -1,9 +1,15 @@
-import "./app.css";
+import "./styles.css";
 import Icons from "../../utils/icons";
-
 import { TrashSimple } from "phosphor-react";
+import React from 'react';
+import { WeatherData } from "../../interfaces";
 
-const app = ({ cities, removeFavorite }) => {
+interface Props {
+  cities: WeatherData[];
+  removeFavorite: (city: WeatherData) => void;
+}
+
+const FavoriteCities = ({ cities, removeFavorite }: Props) => {
   return (
     <div className="favorite-cities-container">
       <div>
@@ -31,4 +37,4 @@ const app = ({ cities, removeFavorite }) => {
   );
 };
 
-export default app;
+export default FavoriteCities;

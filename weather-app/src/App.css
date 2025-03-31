@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  transition: background-image 0.5s linear;
 }
 
 .weather-container.Rain,
@@ -29,6 +30,27 @@
 .weather-container.Clear { background-image: url(../public/Clear.jpg); }
 .weather-container.Clouds { background-image: url(../public/Clouds.jpg); }
 .weather-container.Mist { background-image: url(../public/Mist.jpeg); }
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #de7f2b;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 @media (min-width: 768px) {
   .weather-container {
